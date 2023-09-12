@@ -23,7 +23,7 @@
     "remoteUser": "sail",
     "postCreateCommand": "chown -R 1000:1000 /var/www/html && cp -u .devcontainer/.env.devcontainer.example .env && composer i && php artisan key:generate && npm i && npm run build",
     "shutdownAction": "stopCompose",
-    "forwardPorts": [80, 5173],
+    "forwardPorts": [80, 5173, 3307],
     "portsAttributes": {
         "80": {
             "label": "Laravel"
