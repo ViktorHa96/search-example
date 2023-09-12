@@ -1,0 +1,35 @@
+{
+    "name": "Laravel",
+    "dockerComposeFile": [
+        "docker-compose.yml"
+    ],
+    "service": "laravel.test",
+    "workspaceFolder": "/var/www/html",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "mikestead.dotenv",
+                "amiralizadeh9480.laravel-extra-intellisense",
+                "ryannaddy.laravel-artisan",
+                "onecentlin.laravel5-snippets",
+                "onecentlin.laravel-blade",
+                "editorconfig.editorconfig",
+                "bradlc.vscode-tailwindcss",
+                "vue.volar"
+            ],
+            "settings": {}
+        }
+    },
+    "remoteUser": "sail",
+    "postCreateCommand": "chown -R 1000:1000 /var/www/html && cp -u .devcontainer/.env.devcontainer.example .env && composer i && php artisan key:generate && npm i && npm run build",
+    "shutdownAction": "stopCompose",
+    "forwardPorts": [80, 5173],
+    "portsAttributes": {
+        "80": {
+            "label": "Laravel"
+        },
+        "5173": {
+            "label": "Vite"
+        }
+    }
+}
