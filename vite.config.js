@@ -17,4 +17,7 @@ export default defineConfig({
             },
         }),
     ],
+    server: {
+        hmr: { host: '127.0.0.1' },
+      },
 });
