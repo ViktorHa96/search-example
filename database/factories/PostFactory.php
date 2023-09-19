@@ -18,8 +18,8 @@ class PostFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => $faker->sentence,
-            'description' => $faker->paragraph,
+            'title' =>fake()->sentence(),
+            'description' => fake()->paragraph(),
         ];
     }
 }
