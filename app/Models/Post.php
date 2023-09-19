@@ -9,4 +9,13 @@ use Laravel\Scout\Searchable;
 class Post extends Model
 {
     use HasFactory, Searchable;
+
+    public function toSearchableArray()
+{
+    return [
+        'id' => (int) $this->id,
+        'title' => $this->title,
+        'description' => $this->description,
+    ];
+}
 }
