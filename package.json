@@ -20,6 +20,7 @@
         "vue-tsc": "^1.2.0"
     },
     "dependencies": {
+        "meilisearch": "^0.34.2",
         "ziggy-js": "^1.6.2"
     }
 }

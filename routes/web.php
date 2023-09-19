@@ -17,3 +17,6 @@ use Inertia\Inertia;
 */
 
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/posts', [\App\Http\Controllers\PostController::class, 'getPosts'])->name('get.posts');
+Route::get('/posts/{post}', [\App\Http\Controllers\PostController::class, 'showPost'])->name('show.post');
+
