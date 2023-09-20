@@ -12,13 +12,24 @@ class PostController
     public function getPosts (Request $request) {
        $search = $request->query('search');
 
-       $posts = Post::search($search)->take(10)->get()->map(function ($post) {
+       $posts = Post::search($search)
+       ->take(10)
+       ->get();
+
+        $posts->load('tags', 'category');
+
+        $formattedPosts = $posts->map(function ($post) {
+            $tags = $post->tags->pluck('name')->all();
+            $category = $post->category->name;
+
             return [
                 'id' => $post->id,
                 'title' => $post->title,
                 'description' => Str::of($post->description)->words(5, ' ...'),
+                'tags' => $tags,
+                'category' => $category,
             ];
-       });
+        });
 
        return response()->json([
             'posts' => $posts

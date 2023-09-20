@@ -1,7 +1,9 @@
 <?php
 
 namespace Database\Factories;
-use Faker\Generator as Faker;
+use App\Models\Post;
+use App\Models\Tag;
+use App\Models\Category;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -20,6 +22,15 @@ class PostFactory extends Factory
         return [
             'title' =>fake()->sentence(),
             'description' => fake()->paragraph(),
+            'category_id' => Category::inRandomOrder()->first()->id,
         ];
+    }
+
+    public function configure()
+    {
+        return $this->afterCreating(function (Post $post) {
+            $tags = Tag::inRandomOrder()->limit(2)->get();
+            $post->tags()->attach($tags);
+        });
     }
 }

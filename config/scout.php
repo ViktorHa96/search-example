@@ -134,7 +134,7 @@ return [
         'key' => env('MEILISEARCH_KEY'),
         'index-settings' => [
             Post::class => [
-                'filterableAttributes' => ['title', 'description'],
+                'filterableAttributes' => ['title', 'description', 'tags', 'category'],
                 'sortableAttributes' => ['created_at'],
             ]
         ],
