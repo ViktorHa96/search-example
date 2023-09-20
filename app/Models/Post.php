@@ -33,4 +33,9 @@ class Post extends Model
             'category' => $this->category->name,
         ];
     }
+
+    public function searchableAs()
+    {
+        return 'posts';
+    }
 }
