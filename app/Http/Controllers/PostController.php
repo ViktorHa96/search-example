@@ -16,8 +16,6 @@ class PostController
        ->take(10)
        ->get();
 
-        $posts->load('tags', 'category');
-
         $formattedPosts = $posts->map(function ($post) {
             $tags = $post->tags->pluck('name')->all();
             $category = $post->category->name;
@@ -32,7 +30,7 @@ class PostController
         });
 
        return response()->json([
-            'posts' => $posts
+            'posts' => $formattedPosts
        ]);
     }
 

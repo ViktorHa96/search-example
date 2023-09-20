@@ -7,10 +7,10 @@
                     <Link class="flex flex-col gap-2" :href="route('show.post', item.id)">
                         <h2 class="font-bold">{{ item.title }}</h2>
                         <em class="text-xm">{{ item.description }}</em>
-                        <h2>Category: <span class="font-bold underline">{{ item.category.category }}</span></h2>
+                        <h2>Category: <span class="font-bold underline">{{ item.category }}</span></h2>
                         <div class="flex flex-row gap-2" >
                             <div v-for="tag in item.tags" key:tag.id>
-                                <em class="text-xs px-2 py-1 bg-black text-white rounded-md">{{ tag.name }}</em>
+                                <em class="text-xs px-2 py-1 bg-black text-white rounded-md">{{ tag }}</em>
                             </div>
                         </div>
                     </Link>

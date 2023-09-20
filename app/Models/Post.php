@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Scout\Searchable;
+use App\Models\Tag;
+use App\Models\Category;
 
 
 class Post extends Model
@@ -28,7 +30,7 @@ class Post extends Model
             'title' => $this->title,
             'description' => $this->description,
             'tags' => $this->tags->pluck('name')->toArray(),
-            'category' => $this->category->category,
+            'category' => $this->category->name,
         ];
     }
 }
