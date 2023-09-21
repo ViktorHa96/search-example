@@ -13,6 +13,8 @@ class Post extends Model
 {
     use HasFactory, Searchable;
 
+    protected $guarded = null;
+
     public function tags()
     {
         return $this->morphToMany(Tag::class, 'taggable');
@@ -29,8 +31,6 @@ class Post extends Model
             'id' => (int) $this->id,
             'title' => $this->title,
             'description' => $this->description,
-            'tags' => $this->tags->pluck('name')->toArray(),
-            'category' => $this->category->name,
         ];
     }
 

@@ -4,17 +4,10 @@
         <div v-if="posts.length > 0" class="absolute top-20 left-[50%] translate-x-[-50%] w-1/3">
             <ul>
                 <li class="py-2 px-4 border-2 rounded-lg mb-2 hover:bg-gray-200 duration-100 " v-for="item in posts" :key="item.id">
-                    <Link class="flex flex-col gap-2" :href="route('show.post', item.id)">
-                        <h2 class="font-bold" v-html="item.title"></h2>
+                    <Link class="flex flex-col gap-2" :href="route('show.posts', {type: item.type, id: item.id})">
+                        <h2 class="font-bold" v-html="item.name"></h2>
                         <!-- Použitie v-html pre zvýraznený popis -->
-                        <em class="text-xm" v-html="item.description"></em>
-                        <h2>Category: <span class="font-bold underline" v-html="item.category"></span></h2>
-                        <div class="flex flex-row gap-2" >
-                            <div v-for="tag in item.tags" :key="tag.id">
-                                <!-- Použitie v-html pre zvýraznené tagy -->
-                                <em class="text-xs px-2 py-1 bg-black text-white rounded-md" v-html="tag"></em>
-                            </div>
-                        </div>
+                        <em class="text-xm"> {{ item.type }}</em>
                     </Link>
                 </li>
             </ul>
